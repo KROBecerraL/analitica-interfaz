@@ -10,6 +10,9 @@ from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import r2_score
 from sklearn.metrics import mean_squared_error
+from sklearn.linear_model import LogisticRegression 
+from sklearn import metrics
+import seaborn as sns
 
 #Carolina Becerra Londoño y Miguel Mateo Mendoza Rojas
 
@@ -138,6 +141,12 @@ def btnRegresion():
         print(possibleCreation2)
         if (possibleCreation == 1) and (possibleCreation2 == 1):
             print("Puede graficarse")
+            FIG = regresionLogistica(variable1, variable2)
+            canva = FigureCanvasTkAgg(FIG,master=interfaz)
+            canva.draw()
+            canva.get_tk_widget().place(x=700,y=100)
+            variable1 = ""
+            variable2 = ""
     else:
         print("No eligió la opción de regresión. No se grafica nada")
 
@@ -466,6 +475,14 @@ def plot_regression_line(x, y, b):
   
     plot.xlabel('x')
     plot.ylabel('y')
+    return FIG
+
+def regresionLogistica(varColumn1, varColumn2):
+    x = abaData[varColumn1]
+    y = abaData[varColumn2]
+    FIG = plot.figure()
+    FIG.add_subplot(111)
+    sns.regplot(x=x, y=y, data=abaData, logistic=True, ci=None)
     return FIG
 
 #Etiquetas - Solo texto
