@@ -11,6 +11,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import r2_score
 from sklearn.metrics import mean_squared_error
 
+#Carolina Becerra Londoño y Miguel Mateo Mendoza Rojas
+
 plot.clf()
 plot.close('all')
 
